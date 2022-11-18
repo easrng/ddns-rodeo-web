@@ -55,6 +55,24 @@
       #statushistory {
         user-select: none;
       }
+      @keyframes bgscroll {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 59em 0;
+        }
+      }
+      #statushistory.loading {
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(90deg, #666, #666, #666, #fff, #666);
+        -webkit-background-clip: text;
+        animation-name: bgscroll;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        background-size: 59em 1px;
+        animation-timing-function: ease-in-out;
+      }
     </style>
   </head>
   <body>
@@ -85,6 +103,7 @@
           );
         statushistory.textContent = "";
         statushistory.append(...lines);
+        statushistory.className = "";
       })();
     </script>
   </body>
