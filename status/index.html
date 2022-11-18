@@ -74,10 +74,24 @@
         animation-timing-function: ease-in-out;
         background-attachment: fixed;
       }
+      .sr-only {
+        border: 0 !important;
+        clip: rect(1px, 1px, 1px, 1px) !important;
+        -webkit-clip-path: inset(50%) !important;
+        clip-path: inset(50%) !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        margin: -1px !important;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 1px !important;
+        white-space: nowrap !important;
+      }
     </style>
   </head>
   <body>
-    <div aria-label="dns.rodeo" role="heading">
+    <div>
+      <h1 class="sr-only">ddns.rodeo</h1>
       <pre aria-hidden="true"><span class=" fg-3">             ___  ___  _  _ ____  ____ ____ ___  ____ ____</span>
 <span class=" fg-3">             |  \ |  \ |\ | [__   |__/ |  | |  \ |___ |  |</span>
 <span class=" fg-137">    _ ____  </span><span class=" fg-3"> |__/ |__/ | \| ___] .|  \ |__| |__/ |___ |__|</span>
@@ -86,8 +100,8 @@
 <span class=" fg-137">   \|   |/  \|  </span><span class=" fg-7">│├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤│</span>
 <span class=" fg-2">~^~^~~^~~~^~~^^~^^^~^~~^~~~^~~^^~^^^~^~~^~~~^~~^^~^^^~^~~^~</span></pre>
     </div>
-    <p>ddns.rodeo is <b id="status" class="loading">######</b></p>
-    <pre id="statushistory" class="loading">|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</pre>
+    <p>ddns.rodeo is <b id="status" class="loading"><span class="sr-only">Loading status...</span><span aria-hidden="true">######</span></b></p>
+    <div id="statushistory" class="loading"><span class="sr-only">Loading history...</span><span aria-hidden="true">|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span></div>
     <script>
       (async function () {
         const statushistory = document.querySelector("#statushistory");
@@ -97,8 +111,8 @@
             b.response_times.map((e) => {
               const span = document.createElement("span");
               span.style.color = e.duration_seconds_not_responding ? "red" : "#4ebf22";
-              span.textContent = "|";
-              span.title = (e.duration_seconds_not_responding ? "off" : "on") + "line at " + new Date(e.start).toLocaleString();
+              span.innerHTML = '<span aria-hidden="true">|</span>';
+              span.title = (e.duration_seconds_not_responding ? "off" : "on") + "line " + new Date(e.start).toLocaleString();
               return span;
             })
           );
