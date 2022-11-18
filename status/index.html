@@ -91,7 +91,7 @@
     <script>
       (async function () {
         const statushistory = document.querySelector("#statushistory");
-        const lines = await fetch("https://api.freshping.io/v1/public-check-response-times-reports/920131/?for_hours=59&aggregate_by=hours")
+        const lines = await fetch("https://api.freshping.io/v1/public-check-response-times-reports/920132/?for_hours=59&aggregate_by=hours")
           .then((e) => e.json())
           .then((b) =>
             b.response_times.map((e) => {
@@ -108,7 +108,7 @@
       })();
       (async function () {
         const status = document.querySelector("#status");
-        status.textContent = (await (await fetch("https://api.freshping.io/v1/public-check-statuses/920131/")).json()).state == "AV" ? "online" : "offline";
+        status.textContent = (await (await fetch("https://api.freshping.io/v1/public-check-statuses/920132/")).json()).state == "AV" ? "online" : "offline";
         status.className = "";
         status.style.color = status.textContent == "online" ? "#4ebf22" : "red";
       })();
