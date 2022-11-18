@@ -106,6 +106,12 @@
         statushistory.append(...lines);
         statushistory.className = "";
       })();
+      (async function () {
+        const status = document.querySelector("#status");
+        status.textContent = (await (await fetch("https://api.freshping.io/v1/public-check-statuses/920131/")).json()).state == "AV" ? "online" : "offline";
+        status.className = "";
+        status.style.color = status.textContent == "online" ? "#4ebf22" : "red";
+      })();
     </script>
   </body>
 </html>
