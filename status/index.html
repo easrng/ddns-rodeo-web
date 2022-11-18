@@ -98,7 +98,7 @@
               const span = document.createElement("span");
               span.style.color = e.duration_seconds_not_responding ? "red" : "#4ebf22";
               span.textContent = "|";
-              span.title = (e.duration_seconds_not_responding ? "on" : "off") + "line at " + new Date(e.start).toLocaleString();
+              span.title = (e.duration_seconds_not_responding ? "off" : "on") + "line at " + new Date(e.start).toLocaleString();
               return span;
             })
           );
