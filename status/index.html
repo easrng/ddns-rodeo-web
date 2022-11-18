@@ -63,7 +63,7 @@
           background-position: 59em 0;
         }
       }
-      #statushistory.loading {
+      .loading {
         -webkit-text-fill-color: transparent;
         background: linear-gradient(90deg, #666, #666, #666, #fff, #666);
         -webkit-background-clip: text;
@@ -72,6 +72,7 @@
         animation-iteration-count: infinite;
         background-size: 59em 1px;
         animation-timing-function: ease-in-out;
+        background-attachment: fixed;
       }
     </style>
   </head>
@@ -85,8 +86,8 @@
 <span class=" fg-137">   \|   |/  \|  </span><span class=" fg-7">│├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤├──┤│</span>
 <span class=" fg-2">~^~^~~^~~~^~~^^~^^^~^~~^~~~^~~^^~^^^~^~~^~~~^~~^^~^^^~^~~^~</span></pre>
     </div>
-    <p>ddns.rodeo is <b id="status">______</b></p>
-    <pre id="statushistory">|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</pre>
+    <p>ddns.rodeo is <b id="status" class="loading">######</b></p>
+    <pre id="statushistory" class="loading">|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</pre>
     <script>
       (async function () {
         const statushistory = document.querySelector("#statushistory");
