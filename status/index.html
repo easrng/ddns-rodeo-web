@@ -113,6 +113,7 @@
               span.style.color = e.duration_seconds_not_responding ? "red" : "#4ebf22";
               span.innerHTML = '<span aria-hidden="true">|</span>';
               span.title = (e.duration_seconds_not_responding ? "off" : "on") + "line " + new Date(e.start).toLocaleString();
+              span.tabindex = 0;
               return span;
             })
           );
